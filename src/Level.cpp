@@ -4,6 +4,15 @@
 #include <fstream>
 #include <string>
 
+Level::Level()
+{
+}
+
+void Level::Load(const std::string& filepath)
+{
+	ReadFile(filepath);
+}
+
 void Level::ReadFile(const std::string& filepath)
 {
 	std::ifstream stream(filepath);

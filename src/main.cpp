@@ -1,9 +1,9 @@
 #include "Game.h"
 
 int main()
-{
-	std::unique_ptr<Game> game = std::make_unique<Game>();
-	if (game->Construct(640, 320, 2, 2, false, false))
+{	
+	if (game->Construct(640, 320, 2, 2, false, true))
 		game->Start();
+	delete game;
 	return 0;
 }
