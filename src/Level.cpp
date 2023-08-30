@@ -28,7 +28,7 @@ void Level::Draw(olc::PixelGameEngine* pge)
 	for (int x = 0; x < Width; x++)
 		for (int y = 0; y < Height; y++)
 		{
-			if (map[y * Width + x] == '1')
+			if (map[y * Width + x] == '#')
 				pge->FillRectDecal(olc::vf2d(x, y) * 16.0f, { 16.0f, 16.0f }, olc::GREEN);
 		}
 

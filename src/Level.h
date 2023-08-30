@@ -10,7 +10,7 @@ private:
 public:
 	void ReadFile(const std::string& filepath);
 	void Draw(olc::PixelGameEngine* pge);
-private:
+
 	char GetTile(const olc::vi2d& id);
 	void SetTile(const olc::vi2d& id, char c);
 };

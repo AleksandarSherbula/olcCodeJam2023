@@ -5,9 +5,9 @@
 
 struct Player
 {
-	olc::vf2d pos = { 32.0f, 16.0f };
+	olc::vf2d pos = { 2.0f, 1.0f };
 	olc::vf2d dir = { 1.0f, 0.0f };
-	float speed = 50.0f;
+	float speed = 3.0f;
 };
 
 class Game : public olc::PixelGameEngine
