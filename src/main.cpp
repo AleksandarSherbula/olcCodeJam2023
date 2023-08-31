@@ -2,7 +2,7 @@
 
 int main()
 {	
-	if (game->Construct(640, 320, 2, 2, false, true))
+	if (game->Construct(640, 320, 2, 2, false, false))
 		game->Start();
 	delete game;
 	return 0;
