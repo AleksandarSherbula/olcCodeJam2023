@@ -3,11 +3,7 @@
 
 Player::Player()
 {
-	position = { 2.0f, 1.0f };
-	direction = { 1.0f, 0.0f };
-	speed = 3.0f;
-
-	newDir = direction;
+	Init();
 }
 
 void Player::Update(float fElapsedTime)
@@ -84,4 +80,13 @@ void Player::Update(float fElapsedTime)
 void Player::Draw()
 {
 	game->FillRectDecal(position * 16.0f, { 16.0f, 16.0f }, olc::WHITE);
+}
+
+void Player::Init()
+{
+	position = { 2.0f, 1.0f };
+	direction = { 1.0f, 0.0f };
+	speed = 4.0f;
+
+	newDir = direction;
 }

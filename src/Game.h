@@ -10,6 +10,8 @@ public:
 
 	std::unique_ptr<Level> level;
 	std::unique_ptr<Player> player;
+
+	char chunkOfMemory;
 public:
 	bool OnUserCreate() override;
 	bool OnUserUpdate(float fElapsedTime) override;

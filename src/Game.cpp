@@ -7,22 +7,38 @@ Game::Game()
 
 bool Game::OnUserCreate()
 {
+    chunkOfMemory = '1';
+
     player = std::make_unique<Player>();
     level = std::make_unique<Level>();
 
-    level->Load("assets/levels/test2.lvl");
+    level->Load("assets/levels/test.lvl");
 
     return true;
 }
 
 bool Game::OnUserUpdate(float fElapsedTime)
-{
-    player->Update(fElapsedTime);
+{    
+    if (chunkOfMemory != '9')
+    {
+        if (level->GetTile(player->position) == chunkOfMemory)
+        {
+            level->SetTile(player->position, 'x');
+            player->Init();
+            chunkOfMemory++;
+        }
+
+        player->Update(fElapsedTime);
+    }
 
     Clear(olc::BLACK);
 
     level->Draw(this);
-    player->Draw();
+
+    if (chunkOfMemory != '9')
+        player->Draw();
+    else
+        DrawStringDecal(olc::vf2d(224.0f, 160.0f), "WELL DONE!!!", olc::WHITE, { 2.0f, 2.0f });
 
     return !GetKey(olc::ESCAPE).bPressed;
 }

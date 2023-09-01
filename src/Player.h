@@ -11,6 +11,7 @@ public:
 	float speed;
 public:
 	Player();
+	void Init();
 	void Update(float fElapsedTime);
 	void Draw();
 };
