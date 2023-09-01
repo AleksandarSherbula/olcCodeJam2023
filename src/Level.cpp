@@ -11,6 +11,14 @@ Level::Level()
 void Level::Load(const std::string& filepath)
 {
 	ReadFile(filepath);
+	
+	for (int y = 0; y < Height; y++)
+		for (int x = 0; x < Width; x++)
+		{
+			if (map[y * Width + x] == 'x')
+				interesctPos.push_back(olc::vf2d(x, y));
+		}
+	
 }
 
 void Level::ReadFile(const std::string& filepath)

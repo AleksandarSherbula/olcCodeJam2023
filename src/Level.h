@@ -9,6 +9,7 @@ private:
 	int Width;
 	int Height;
 	std::string map;
+public:
 	std::vector<olc::vf2d> interesctPos;
 public:
 	Level();

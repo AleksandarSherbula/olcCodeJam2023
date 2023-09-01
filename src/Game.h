@@ -13,6 +13,8 @@ public:
 public:
 	bool OnUserCreate() override;
 	bool OnUserUpdate(float fElapsedTime) override;
+
+	bool cmp(olc::vf2d a, olc::vf2d b, float epsilon = 0.1f);
 };
 
 inline Game* game = new Game();

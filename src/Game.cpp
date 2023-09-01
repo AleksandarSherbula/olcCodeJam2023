@@ -26,3 +26,9 @@ bool Game::OnUserUpdate(float fElapsedTime)
 
     return !GetKey(olc::ESCAPE).bPressed;
 }
+
+bool Game::cmp(olc::vf2d a, olc::vf2d b, float epsilon)
+{
+    return (a.x >= b.x && a.x < b.x + epsilon &&
+        a.y >= b.y && a.y < b.y + epsilon);
+}

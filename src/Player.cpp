@@ -52,30 +52,33 @@ void Player::Update(float fElapsedTime)
 		}
 	}
 
-	position = newPos;
+	if ((direction.x == -1 && newDir.x == 1) ||
+		(direction.x == 1 && newDir.x == -1))
+		direction.x *= -1;
 
-	if (newDir.x != direction.x || newDir.y != direction.y)
+	if ((direction.y == -1 && newDir.y == 1) ||
+		(direction.y == 1 && newDir.y == -1))
+		direction.y *= -1;
+
+	//Did the Player change the direction and the axis
+	for (olc::vf2d crossPos : game->level->interesctPos)
 	{
-		if (newDir.x < 0.0f)
+		//From Left or Right to Up or Down and the other way around
+		if (game->cmp(newPos, crossPos))
 		{
-			if (game->level->GetTile(olc::vi2d(position.x, position.y)) == 'x' &&
-				game->level->GetTile(olc::vi2d(position + newDir)) != '#')
-				direction.x = newDir.x;
+			if (newDir.y == -1 && game->level->GetTile(olc::vi2d(crossPos.x, crossPos.y - 1)) != '#' ||
+				newDir.y == 1 && game->level->GetTile(olc::vi2d(crossPos.x, crossPos.y + 1)) != '#')
+				newPos.x = (int)crossPos.x;
+
+			if (newDir.x == -1 && game->level->GetTile(olc::vi2d(crossPos.x - 1, crossPos.y)) != '#' ||
+				newDir.x == 1 && game->level->GetTile(olc::vi2d(crossPos.x + 1, crossPos.y)) != '#')
+				newPos.y = (int)crossPos.y;
+
+			direction = newDir;
 		}
-		else if (direction.y < 0.0f)
-		{
-			if (game->level->GetTile(olc::vi2d(position.x, position.y + 1.0f)) == 'x' &&
-				game->level->GetTile(olc::vi2d(position + newDir)) != '#')
-				direction = newDir;
-		}
-		else
-		{
-			if (game->level->GetTile(olc::vi2d(position)) == 'x' && 
-				game->level->GetTile(olc::vi2d(position + newDir)) != '#')
-				direction = newDir;
-		}
-		
 	}
+
+	position = newPos;
 }
 
 void Player::Draw()
